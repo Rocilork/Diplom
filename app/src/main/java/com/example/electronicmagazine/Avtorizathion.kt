@@ -9,13 +9,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import com.example.electronicmagazine.Class.User
 import com.example.electronicmagazine.Object.SB
 import io.github.jan.supabase.gotrue.gotrue
 import io.github.jan.supabase.gotrue.providers.builtin.Email
+import io.github.jan.supabase.postgrest.postgrest
+import io.github.jan.supabase.postgrest.query.Columns
 import kotlinx.coroutines.launch
 import org.json.JSONException
 import java.lang.Exception
-
 class Avtorizathion : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,20 +54,24 @@ class Avtorizathion : AppCompatActivity() {
                                 password = passA
                             }
                             Toast.makeText(applicationContext, "Вы авторизовались!", Toast.LENGTH_SHORT).show()
-
-//                            when (x) {
-//                                1 -> print(startActivity(intentS))
-//                                2 -> print(startActivity(intentC))
-//                                3 -> print(startActivity(intentA))
-//                                else -> { // Внимание на блок
-//                                    print("Ошибка")
-//                                }
-//                            }
+                            //Получаем пользователя по id
+                            val session_user = SB.getClient().gotrue.retrieveUserForCurrentSession(updateSession = true)
+                            val city = SB.getClient().postgrest["Пользователь"].select()                            {
+                                eq("ID_пользователя", session_user.id)
+                            }.decodeSingle<User>()
+                            //Выбор на какое окно перейти в зависимости от роли пользователя
+                            when (city.id_роли) {
+                                1 -> print(startActivity(intentS))
+                                2 -> print(startActivity(intentC))
+                                3 -> print(startActivity(intentA))
+                                else -> { // Внимание на блок
+                                    print("Ошибка")
+                                }
+                            }
                             //Если произошла ошибка
                         }catch (ex: Exception){
                             Toast.makeText(applicationContext, "Такого пользователя нет!", Toast.LENGTH_SHORT).show()
                         }
-
                     }
                 }
             }catch (ex: JSONException) {

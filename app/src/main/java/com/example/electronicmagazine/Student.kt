@@ -10,7 +10,6 @@ class Student : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student)
     }
-
     fun onBack (view: View){
         val intent = Intent(this, Avtorizathion::class.java)
         startActivity(intent)
