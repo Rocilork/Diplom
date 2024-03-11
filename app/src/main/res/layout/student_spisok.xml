@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/rounded_text_view"
+        android:background="@drawable/rounded_text_view2"
         android:layout_marginVertical="5dp"
         android:layout_marginHorizontal="5dp">
 
@@ -27,7 +27,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_text_view"
+            android:background="@drawable/rounded_text_view2"
             android:orientation="horizontal">
 
             <TextView
@@ -39,7 +39,7 @@
                 android:gravity="left"
                 android:textColor="@color/orange"
                 android:text="Предмет"
-                android:background="@drawable/rounded_text_view"
+                android:background="@drawable/rounded_text_view2"
                 android:textSize="25dp" />
 
             <TextView

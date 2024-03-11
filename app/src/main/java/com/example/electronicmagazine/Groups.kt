@@ -5,19 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 
-class Administrator : AppCompatActivity() {
+class Groups : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_administrator)
+        setContentView(R.layout.activity_groups)
     }
 
     fun onBack (view: View){
-        val intent = Intent(this, Avtorizathion::class.java)
-        startActivity(intent)
-    }
-
-    fun onGroups (view: View){
-        val intent = Intent(this, Groups::class.java)
+        val intent = Intent(this, Administrator::class.java)
         startActivity(intent)
     }
 }
